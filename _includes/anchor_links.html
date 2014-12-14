@@ -1,9 +1,9 @@
 <script>
   var anchorForId = function (id) {
     var anchor = document.createElement("a");
-    anchor.className = "header-link";
+    anchor.className = "anchor";
     anchor.href      = "#" + id;
-    anchor.innerHTML = "<i class=\"fa fa-link\"></i>";
+    anchor.innerHTML = "<span class=\"octicon octicon-link\"></span></a>";
     return anchor;
   };
 
@@ -13,14 +13,14 @@
       var header = headers[h];
 
       if (typeof header.id !== "undefined" && header.id !== "") {
-        header.appendChild(anchorForId(header.id));
+        header.insertBefore(anchorForId(header.id), header.firstChild);
       }
     }
   };
 
   document.onreadystatechange = function () {
     if (this.readyState === "complete") {
-      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      var contentBlock = document.getElementsByClassName("markdown-body")[0];
       if (!contentBlock) {
         return;
       }
