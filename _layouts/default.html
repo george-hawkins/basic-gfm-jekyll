@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-  {% include head.html %}
+    <link href="https://necolas.github.io/normalize.css/latest/normalize.css" media="all" rel="stylesheet" type="text/css">
+    <!-- For whatever reason github-markdown-css is not available via github pages or via https.
+         Retrieving it raw from github.com results in it being retrieved with the wrong mime type.
+    -->
+    <link href="http://sindresorhus.com/github-markdown-css/github-markdown.css" media="all" rel="stylesheet" type="text/css">
 
-  <body>
+    <!--
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    -->
 
-    {% include header.html %}
+<style>
+/*
+ * github-markdown.css provides all the CSS needed for the markdown content.
+ * This CSS provides what's needed for the containing <div> and <article> tags.
+ */
 
-    <div class="page-content">
-      <div class="wrapper">
+.container {
+    /* Center fixed width content with top and bottom margins. */
+    width:980px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.markdown-body {
+    /* Surround content with a border with slightly rounded corners. */
+    border:1px solid #ddd;
+    border-radius:3px;
+
+    /* Create the space needed for hover anchors to the left of headings. */
+    padding:30px;
+}
+</style>
+
+</head>
+
+<body>
+    
+<div class="container">
+    <article class="markdown-body">
         {{ content }}
-      </div>
-    </div>
+    </article>
+</div>
 
-    {% include footer.html %}
-
-  </body>
-
+</body>
 </html>
