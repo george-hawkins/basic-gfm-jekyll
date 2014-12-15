@@ -7,7 +7,7 @@ title: Configuring Redcarpet
 
 GitHub uses the [Redcarpet](https://github.com/vmg/redcarpet/) renderer for `.md` content.
 
-Jekyll supports various markdown renderers and each has their own configuration settings. These settings are somewhat confusingly called "extensions".
+Jekyll supports various Markdown renderers and each has their own configuration settings. These settings are somewhat confusingly called "extensions".
 
 The extensions for Redcarpet are documented in the "[simple to use](https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use)" section of the main Redcarpet README.
 
@@ -20,7 +20,7 @@ redcarpet:
     extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
 ```
 
-Let's look at all the Redcarpet extensions - both the standard ones and the Jekyll specific ones.
+Let's look at all these Redcarpet extensions, both the standard ones and the Jekyll specific ones, and look at if they're used by GitHub for `.md` content.
 
 ## Standard Redcarpet extensions
 
@@ -60,20 +60,20 @@ alert(s);
 
 Set by GitHub - without it the following would not automatically be handled as links and you'd need to use `[foo@...](mailto:foo@...)` etc.
 
-foo@bar.com
-www.example.com
+foo@bar.com  
+www.example.com  
 http://www.example.com/
 
 ### disable_indented_code_blocks
 
-Not set by GitHub - if it were you couldn't use the traditional markup approach of creating code block by indenting them by four spaces.
+Not set by GitHub - if it were you couldn't use the traditional Markdown approach of creating code block by indenting them by four spaces.
 
     This is a code block created by indenting each line by four spaces.
     As in fenced code blocks you don't have to worry about e.g. <b> being interpreted.
 
 ### strikethrough
 
-Set by GitHub - with this enabled you can strikethrough text by surrounding it with two `~` characters at the start and end.
+Set by GitHub - with this enabled you can strikethrough text with two `~` characters at the start and end.
 
 ~~strikethrough~~
 
@@ -137,26 +137,9 @@ Set by GitHub. Without this headers would not automatically have HTML anchors th
 
 ##### Link to me
 
-To jump to this header you just need to do `[link](#link-to-me)` which results in "[link](#link-to-me)".
+To jump to this header you just need to do `[link](#link-to-me)` - which results in "[link](#link-to-me)".
 
-Important: this just causes an `id` attribute to be added to headers. To also get an anchor to appear when you hover over the header, as happens with GitHub, it was necessary to:
-
-* create an `_includes` subdirectory and copy in [anchor_links.html](https://github.com/jekyll/jekyll/blob/master/site/_includes/anchor_links.html) from the GitHub Jekyll project.
-* include this file before the `</body>` tag of `_layouts/default.html` with the Liquid markup `{% raw %}{% include anchor_links.html %}{% endraw %}`.
-
-The Jekyll project uses this to add hover anchors for their own site but with a somewhat different look to GitHub (a different font for the anchors and the anchors appear to the right of headers).
-
-To get the GitHub style of hover anchors it was necessary to slightly modify `anchor_links.html`.
-
-```html
-<h2 id="my-header">My Header</h2>
-```
-
-With this this change the above is now processed to appear as:
-
-```html
-<h2 id="my-header"><a class="anchor" href="#my-header"><span class="octicon octicon-link"></span></a>My Header</h2>
-```
+See the separate "[Hover anchors](#hover-anchors)" section for more details.
 
 ### hard_wrap
 
@@ -168,19 +151,19 @@ Not set by GitHub. If it were XHTML-conformant tags would be output, e.g. `<br>`
 
 ### prettify
 
-Not set by GitHub. If it were the class `prettyprint` would be added to `code` tags so that you could use [google-code-prettify](https://code.google.com/p/google-code-prettify/wiki/GettingStarted). Note: this affects inline code, i.e. text surrounded by backticks, and code blocks. If using this extension one should probably disable fenced code blocks which are handled with the [Pygments](http://pygments.org/) highlighting system.
+Not set by GitHub. If it were the class `prettyprint` would be added to `code` tags so that you could use [google-code-prettify](https://code.google.com/p/google-code-prettify/wiki/GettingStarted). Note: this affects both inline code, i.e. text surrounded by backticks, and code blocks. If using this extension one should probably disable fenced code blocks which are handled with the [Pygments](http://pygments.org/) highlighting system.
 
 ### link_attributes
 
-Not set by GitHub. It can be used to add attributes like `target="_blank"` or `rel="nofollow"` to all links. Note: the extensions sub-setting in `_config.yml` cannot be used for this extension as that feature only works for [extensions that can be set to true](http://jekyllrb.com/docs/configuration/#redcarpet).
+Not set by GitHub. It can be used to add attributes like `target="_blank"` or `rel="nofollow"` to all links. Note: the extensions sub-setting in `_config.yml` cannot be used for this extension as it only supports [extensions that can be set to true](http://jekyllrb.com/docs/configuration/#redcarpet).
 
 ## Safe HTML extensions
 
-In addition to the standard extensions already covered there are extensions related to constraining the use of HTML in Markdown.
+In addition to the extensions already covered there are a number of standard extensions related to constraining the use of HTML in Markdown.
 
-GitHub is fairly lenient on the use of HTML in Markdown and the following restrictive extensions are _not_ set by GitHub:
+GitHub is fairly lenient in this respect and the following restrictive extensions are _not_ set by GitHub:
 
-*`filter_html`
+* `filter_html`
 * `no_images`
 * `no_links`
 * `escape_html`
@@ -193,7 +176,7 @@ Set by GitHub. You cannot use the `<style>` tag to add extra CSS into Markdown c
 
 ### safe_links_only
 
-Set by GitHub. Only local links, anchors and the protocols `http`, `https`, `ftp` and `mailto` can be used (see [`sd_autolink_issafe`](https://github.com/vmg/redcarpet/blob/4b8df5a/ext/redcarpet/autolink.c#L34) in `anchor.c`).
+Set by GitHub. Only local links, anchors and the protocols `http`, `https`, `ftp` and `mailto` can be used in links (see [`sd_autolink_issafe`](https://github.com/vmg/redcarpet/blob/4b8df5a/ext/redcarpet/autolink.c#L34) in `anchor.c`).
 
 ## Jekyll specific Redcarpet extensions
 
@@ -207,7 +190,7 @@ Not set by GitHub. If it were "foobar" and ``foobar'' would both appear as &ldqu
 
 Similarly three periods would appear as a proper elipsis character, two minuses as an en-dash and three as an em-dash.
 
-See [SmartyPants](http://daringfireball.net/projects/smartypants/) for details.
+See [SmartyPants](http://daringfireball.net/projects/smartypants/) for more details.
 
 ## Notes
 
@@ -220,7 +203,7 @@ alert(s);
 
 By default Jekyll uses the [Pygments](http://pygments.org/) highlighting system for code blocks like the above.
 
-I you look at the HTML generated by Jekyll for the above code block you see:
+If you look at the HTML generated by Jekyll for the above code block you see:
 
 ```html
 <div class="highlight">
@@ -238,7 +221,7 @@ However if you look at what GitHub generates you see:
         <span class="pl-s">var</span>
 ```
 
-The `<span>` tag classes seen in the GitHub generated output are the ones supported by [github-markdown-css](https://github.com/sindresorhus/github-markdown-css).
+The `<span>` classes seen in the GitHub generated output are the ones supported by [github-markdown-css](https://github.com/sindresorhus/github-markdown-css).
 
 For the ones seen in the Pygments output from Jekyll you have to generate a `.css` file like so:
 
@@ -294,8 +277,29 @@ If `hard_wrap` is enabled this will result in the following being generated:
 </table><br>
 ```
 
-Which probably isn't what you'd expect or want. The only way to get around this is avoid newlines in HTML:
+Which probably isn't what you'd expect or want. The only way to get around this is avoid newlines in your HTML:
 
 ```html
 <table><tr><td>Single cell HTML table</td></tr></table>
+```
+
+### Hover anchors
+
+The `with_toc_data` extension just causes `id` attributes to be added to headers. To also get an anchor to appear when you hover over the header, as happens with GitHub, it was necessary to:
+
+* create an `_includes` subdirectory and copy in [`anchor_links.html`](https://github.com/jekyll/jekyll/blob/master/site/_includes/anchor_links.html) from the GitHub Jekyll project.
+* include this file before the `</body>` tag of `_layouts/default.html` using the Liquid markup `{% raw %}{% include anchor_links.html %}{% endraw %}`.
+
+The Jekyll project uses `anchor_links.html` like this to add hover anchors for their own site but with a somewhat different look to GitHub (a different font for the anchors and the anchors appear to the right of headers).
+
+To get the GitHub style of hover anchors it was necessary to slightly modify `anchor_links.html`.
+
+```html
+<h2 id="my-header">My Header</h2>
+```
+
+With this this change the above is now processed to appear as:
+
+```html
+<h2 id="my-header"><a class="anchor" href="#my-header"><span class="octicon octicon-link"></span></a>My Header</h2>
 ```
