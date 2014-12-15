@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Redcarpet extensions
+title: Configuring Redcarpet
 ---
 
 # Configuring Redcarpet
@@ -13,7 +13,7 @@ The extensions for Redcarpet are documented in the "[simple to use](https://gith
 
 Jekyll also adds a number of Jekyll specific Redcarpet extensions which are documented in the [Redcarpet section](http://jekyllrb.com/docs/configuration/#redcarpet) of the Jekyll configuration page.
 
-In your `_config.yml` you can set the various extensions you want for a specific renderer, e.g. like so for redcarpet:
+In your `_config.yml` you can set the various extensions you want for a specific renderer, e.g. like so for Redcarpet:
 
 ```YAML
 redcarpet:
