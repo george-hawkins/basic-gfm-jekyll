@@ -117,7 +117,7 @@ I.e. `_foobar_` and `*foobar*` both result in *foobar*.
 
 ### highlight
 
-Not set by GitHub. If it were then ==highlight== would appear as <mark>highlighted</mark>.
+Not set by GitHub. If it were then ==highlighted== would appear as <mark>highlighted</mark>.
 
 ### quote
 
