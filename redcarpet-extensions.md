@@ -207,6 +207,8 @@ Not set by GitHub. If it were "foobar" and ``foobar'' would both appear as &ldqu
 
 Similarly three periods would appear as a proper elipsis character, two minuses as an en-dash and three as an em-dash.
 
+See [SmartyPants](http://daringfireball.net/projects/smartypants/) for details.
+
 ## Notes
 
 ### Language specific highlighting
