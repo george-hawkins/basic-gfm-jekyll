@@ -8,10 +8,10 @@
 
     <link href="//necolas.github.io/normalize.css/latest/normalize.css" media="all" rel="stylesheet" type="text/css">
 
-    <!-- For whatever reason github-markdown-css is not available via github pages or via https.
-         Retrieving it raw from github.com results in it being retrieved with the wrong mime type.
+    <!-- For whatever reason github-markdown.css is not available via https from github.io and retrieving
+         it raw from github.com results in the wrong MIME type. So we use the RawGit service instead.
     -->
-    <link href="http://sindresorhus.com/github-markdown-css/github-markdown.css" media="all" rel="stylesheet" type="text/css">
+    <link href="//rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css" media="all" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="{{ "/css/container.css" | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
