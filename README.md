@@ -88,11 +88,11 @@ Jekyll supports various Markdown processors, the one that handles `.md` in the w
 
 ## Boilerplate
 
-So what are the various boilerplate files and where did they come from?
+So what are the various boilerplate files? Here's a brief explanation of each:
 
 * [`_config.yml`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_config.yml) - this contains variables and configuration for Jekyll, see the [Jekyll configuration page](http://jekyllrb.com/docs/configuration/) for more details.
 * [`_includes/anchor_links.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_includes/anchor_links.html) - this create the visible anchors you see when you hover your mouse over a heading, see the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` for more details.
-* [`_layouts/default.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html) - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{% raw %}{{ content }}{% endraw %}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you see above in the front matter.
+* [`_layouts/default.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html) - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{{ content }}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you saw above in the front matter.
 * [`css/container.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/container.css) - this is the very simple CSS for the two `<div>` elements seen in `default.html`.
 * [`css/syntax.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/syntax.css) - this is the CSS needed for syntax highlighting.
 
@@ -110,3 +110,5 @@ In addition to the two `.css` files mentioned `default.html` pulls in two furthe
 ## Final notes
 
 The page `redcarpet-extensions.md` is mainly intended as an example of making `.md` content available via github.io but it does also explain the various options you can specify in `_config.yml` that control how Redcarpet works.
+
+You can use Liquid markup in your pages served via github.io however this markup is not processed when the same `.md` is viewed on github.com. For an example see how the Liquid tag `raw` is not processed when you look at the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` on github.com but is consumed when you look at the same [section on github.io](https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html#hover-anchors).
