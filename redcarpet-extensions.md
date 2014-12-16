@@ -298,7 +298,7 @@ To get the GitHub style of hover anchors it was necessary to slightly modify `an
 <h2 id="my-header">My Header</h2>
 ```
 
-With this this change the above is now processed to appear as:
+With this change the above is now processed to appear as:
 
 ```html
 <h2 id="my-header"><a class="anchor" href="#my-header"><span class="octicon octicon-link"></span></a>My Header</h2>
