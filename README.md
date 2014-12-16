@@ -90,11 +90,11 @@ Jekyll supports various Markdown processors, the one that handles `.md` in the w
 
 So what are the various boilerplate files and where did they come from?
 
-* [`_config.yml`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_config.yml] - this contains variables and configuration for Jekyll, see the [Jekyll configuration page](http://jekyllrb.com/docs/configuration/) for more details.
-* [`_includes/anchor_links.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_includes/anchor_links.html] - this create the visible anchors you see when you hover your mouse over a heading, see the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` for more details.
-* [`_layouts/default.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html] - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{% raw %}{{ content }}{% endraw %}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you see above in the front matter.
-* [`css/container.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/container.css] - this is the very simple CSS for the two `<div>` elements seen in `default.html`.
-* [`css/syntax.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/syntax.css] - this is the CSS needed for syntax highlighting.
+* [`_config.yml`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_config.yml) - this contains variables and configuration for Jekyll, see the [Jekyll configuration page](http://jekyllrb.com/docs/configuration/) for more details.
+* [`_includes/anchor_links.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_includes/anchor_links.html) - this create the visible anchors you see when you hover your mouse over a heading, see the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` for more details.
+* [`_layouts/default.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html) - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{% raw %}{{ content }}{% endraw %}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you see above in the front matter.
+* [`css/container.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/container.css) - this is the very simple CSS for the two `<div>` elements seen in `default.html`.
+* [`css/syntax.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/syntax.css) - this is the CSS needed for syntax highlighting.
 
 As mentioned above syntax highlighting is handled by a tool called Pygments and the `syntax.css` file was generated using the `pygmentize` tool like so:
 
