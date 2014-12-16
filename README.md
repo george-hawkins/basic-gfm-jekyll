@@ -1,24 +1,26 @@
-GitHub pages are great but wouldn't you like to be able to use `.md` files instead of having to provide HTML?
+# Serve Markdown via github.io
+
+GitHub Pages are great but wouldn't you like to be able to use `.md` files instead of having to provide HTML?
 
 As it turns out with the right boilerplate this is simple to do and is demonstrated here.
 
-Compare the file 'redcarpet-extensions.md' as it appears here on github.com and as it appears served as HTML via github.io:
+Compare the file `redcarpet-extensions.md` as it appears here on github.com and as it appears served as HTML via github.io:
 
-* https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md
-* https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html
+* [github.com redcarpet-extensions.md](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md)
+* [github.io redcarpet-extensions.html](https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html)
 
-Note the change in suffix between the two URLs - from `.md` to `.html`.
+Note the change in suffix between the two - from `.md` to `.html`.
 
 If you compare the two you will notice some slight differences:
 
-* When looked at on github.com you'll see a small table (showing layout as default and title as "Configuring Redcarpet") that isn't present in the github.io version. This is front matter and is explained later.
-* If you go down to the [highlight section on github.io](https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html#highlight) and compare it with the same [section on github.com](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#highlight) you'll see highlighting in action on the github.io version but not on the github.com version. This is because Github filters out all but a subset of tags when your content is displayed mixed in with theirs.
-* The content area is slightly wider on github.io than on github.com - this is because the content area on github.io expands out into the area that was taken up by the GitHub sidebar for settings etc.
+* When looked at on github.com you'll see an initial small table (showing layout as "default" and title as "Configuring Redcarpet") that isn't present in the github.io version. This is front matter and is explained later.
+* If you go down to the [highlight section on github.io](https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html#highlight) and compare it with the same [section on github.com](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#highlight) you'll see highlighting in action on the github.io version but not on the github.com version. This is because Github filters out all but a subset of HTML tags when your content is displayed mixed in with theirs.
+* The content area is slightly wider on github.io than on github.com - this is because the content area has expanded out into the area that was taken up by the GitHub sidebar for settings etc.
 * The syntax highlighting is slightly different - the github.io version uses the standard settings of a highlighter called [Pygments](http://pygments.org/docs/quickstart/) while the version on github.com uses GitHub's own setup.
 
 The important thing is front matter - it's the one change you have to make to a standard `.md` file in order for it to be served via github.io.
 
-This README.md will not served via github.io as it has no front matter.
+This `README.md` will not served via github.io as it has no front matter.
 
 If you look at the [raw version of redcarpet-extensions.md](https://raw.githubusercontent.com/george-hawkins/basic-gfm-jekyll/gh-pages/redcarpet-extensions.md) you'll see an initial block of text:
 
@@ -27,13 +29,11 @@ If you look at the [raw version of redcarpet-extensions.md](https://raw.githubus
     title: Configuring Redcarpet
     ---
 
-This is the [front matter](http://jekyllrb.com/docs/frontmatter/) - several variables between lines of three minuses. Various variables can be specified, the block above shows the simplest case - a layout name ("default" corresponds to a `.html` file mentioned later) and a title for the resulting HTML page.
+This is the [front matter](http://jekyllrb.com/docs/frontmatter/) - several variables between lines of three minuses. Any number of variables can be specified - the block above shows the simplest case - a layout name ("default" which corresponds to a `.html` file covered later) and a title for the resulting HTML page.
 
 ## Creating a copy
 
-To create a copy of this repository, called e.g. "my-pages", you need to create a new empty repository with this name on GitHub.
-
-To use this as a basis for your own repository, let's call it "my-pages", you need to create an empty repository with that name on GitHub and then duplicate "basic-gfm-jekyll" like so:
+To use this repository as a basis for your own you need to create an empty repository, let's call it "my-pages", on GitHub and then duplicate "basic-gfm-jekyll" like so:
 
 ```bash
 $ git clone --bare git@github.com:george-hawkins/basic-gfm-jekyll.git
@@ -51,7 +51,7 @@ $ cd my-pages
 
 Duplicating repositories is covered in more detail on [GitHub help](https://help.github.com/articles/duplicating-a-repository/).
 
-If you aren't using an [ssh key](https://help.github.com/articles/generating-ssh-keys/#step-3-add-your-ssh-key-to-your-account) with your account you'll have to `https` style URLS rather that the `git` style ones used above, i.e. replace `git@github.com:` with `https://github.com/`.
+If you aren't [using an ssh key](https://help.github.com/articles/generating-ssh-keys/#step-3-add-your-ssh-key-to-your-account) with your account you'll have to use `https` style URLS rather than the `git` style ones used above, i.e. replace `git@github.com:` with `https://github.com/`.
 
 Now you'll need to make two small but important changes to the file `_config.yml` found in the base directory of the repository.
 
@@ -62,13 +62,13 @@ baseurl: "/basic-gfm-jekyll"
 url: "https://george-hawkins.github.io"
 ```
 
-You need to replace `basic-gfm-jekyll` with the name of your repository, i.e. `my-pages` in this example and you need to replace `george-hawkins` with your GitHub username.
+You need to replace `basic-gfm-jekyll` with the name of your repository, i.e. `my-pages` in this example, and you need to replace `george-hawkins` with your GitHub username.
 
 Without the `baseurl` change nothing will work at all and without the `url` change your github.io content will references my github.io site.
 
 ## Creating new content
 
-Now that you have a copy of this repository you can remove README.md and redcarpet-extensions.md, everything else is necessary boilerplate.
+Now that you have a copy of this repository you can remove `README.md` and `redcarpet-extensions.md`, everything else is necessary boilerplate.
 
 To add new content simply create new `.md` files and remember to add front matter as shown above.
 
@@ -80,7 +80,7 @@ That's it - for some explanation of the mechanics read on.
 
 ## Jekyll
 
-GitHub uses a static site generator called [Jekyll](http://jekyllrb.com/) that converts various formats, such as `.md`, into HTML and supports a templating engine called [Liquid](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+GitHub uses a static site generator called [Jekyll](http://jekyllrb.com/) that converts various formats, such as `.md`, into HTML and also supports a templating engine called [Liquid](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
 
 `_config.xml` etc. along with front matter drive how the Jekyll engine will render `.md` files into the HTML content served via github.io.
 
@@ -90,11 +90,11 @@ Jekyll supports various Markdown processors, the one that handles `.md` in the w
 
 So what are the various boilerplate files and where did they come from?
 
-* `[_config.yml](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_config.yml]` - this contains variables and configuration for Jekyll, see the [Jekyll configuration page](http://jekyllrb.com/docs/configuration/) for more details.
-* `[_includes/anchor_links.html](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_includes/anchor_links.html]` - this create the visible anchors you see when you hover your mouse over a heading, see the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` for more details.
-* `[_layouts/default.html](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html]` - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{% raw %}{{ content }}{% endraw %}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you see above in the front matter.
-* `[css/container.css](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/container.css]` - this is the very simple CSS for the two `<div>` elements seen in `default.html`.
-* `[css/syntax.css](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/syntax.css]` - this is the CSS needed for syntax highlighting.
+* [`_config.yml`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_config.yml] - this contains variables and configuration for Jekyll, see the [Jekyll configuration page](http://jekyllrb.com/docs/configuration/) for more details.
+* [`_includes/anchor_links.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_includes/anchor_links.html] - this create the visible anchors you see when you hover your mouse over a heading, see the "[hover anchors](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#hover-anchors)" section of `redcarpet-extensions.md` for more details.
+* [`_layouts/default.html`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/_layouts/default.html] - take a look at this file, it provides the very simply HTML that surrounds your `.md` content (which ends up where you see `{% raw %}{{ content }}{% endraw %}`). The name of this file minus the `.html` suffix, i.e. `default`, corresponds to the layout name you see above in the front matter.
+* [`css/container.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/container.css] - this is the very simple CSS for the two `<div>` elements seen in `default.html`.
+* [`css/syntax.css`](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/css/syntax.css] - this is the CSS needed for syntax highlighting.
 
 As mentioned above syntax highlighting is handled by a tool called Pygments and the `syntax.css` file was generated using the `pygmentize` tool like so:
 
