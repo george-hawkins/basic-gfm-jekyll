@@ -16,7 +16,7 @@ If you compare the two you will notice some slight differences:
 * When looked at on github.com you'll see an initial small table (showing layout as "default" and title as "Configuring Redcarpet") that isn't present in the github.io version. This is front matter and is explained later.
 * If you go down to the [highlight section on github.io](https://george-hawkins.github.io/basic-gfm-jekyll/redcarpet-extensions.html#highlight) and compare it with the same [section on github.com](https://github.com/george-hawkins/basic-gfm-jekyll/blob/gh-pages/redcarpet-extensions.md#highlight) you'll see highlighting in action in the github.io version but not in the github.com version. This is because Github filters out all but a subset of HTML tags when your content is displayed mixed in with theirs.
 * The content area is slightly wider on github.io than on github.com - this is because the content area has expanded into the area that was taken up by the GitHub sidebar for settings etc.
-* The syntax highlighting is slightly different - the github.io version uses the standard settings of a highlighter called [Pygments](http://pygments.org/docs/quickstart/) while the version on github.com uses GitHub's own setup.
+* The syntax highlighting is slightly different - the github.io version uses the standard settings of the default Jekyll highlighter [Pygments](http://pygments.org/docs/quickstart/) while the version on github.com uses the syntax highlighting of GitHub's own [linguist system](https://github.com/github/linguist#syntax-highlighting).
 
 The important thing is front matter - it's the one change you have to make to a standard `.md` file in order for it to be served via github.io.
 
