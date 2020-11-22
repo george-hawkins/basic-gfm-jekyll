@@ -1,3 +1,8 @@
+Update
+======
+
+See [here](https://github.com/george-hawkins/basic-gfm-jekyll-v2) for a briefer and more up-to-date version of the process described here (which is from late 2014).
+
 # Serve Markdown via github.io
 
 GitHub Pages are great but wouldn't you like to be able to use `.md` files instead of having to provide HTML?
